@@ -8,7 +8,7 @@
 	<arg name="world" value="$(arg world)" />
   </include>
 
-  <arg name="urdf" default="$(find amr_robots_description)/urdf/pioneer-lx.urdf" />
+  <arg name="urdf" default="$(find amr-ros-config)/urdf/pioneer-lx.urdf" />
   <arg name="name" default="pioneer-lx" />
   <param name="robot_description" command="$(find xacro)/xacro.py $(arg urdf)" />
   <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-param robot_description -urdf -model $(arg name)" />

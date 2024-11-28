@@ -14,7 +14,7 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0.177"/>
       <geometry name="skj_geom">
-        <!-- mesh filename="package://amr_robots_description/meshes/seekurjr_meshes/body.stl"/ -->
+        <!-- mesh filename="package://amr-ros-config/meshes/seekurjr_meshes/body.stl"/ -->
         <box size="0.440 1.050 0.500"/>
       </geometry>
       <material name="BodyBlue">
@@ -24,7 +24,7 @@
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0.177"/>
       <geometry>
-        <!-- mesh filename="package://amr_robots_description/meshes/seekurjr_meshes/body_collision.stl"/ -->
+        <!-- mesh filename="package://amr-ros-config/meshes/seekurjr_meshes/body_collision.stl"/ -->
         <box size="0.440 1.050 0.500"/>
       </geometry>
     </collision>
@@ -41,7 +41,7 @@
     <visual>
       <origin rpy="-1.570795 0 0" xyz="0 0 0"/>
       <geometry name="skj_wheel_geom">
-        <!-- mesh filename="package://amr_robots_description/meshes/skj_meshes/wheel.stl"/ -->
+        <!-- mesh filename="package://amr-ros-config/meshes/skj_meshes/wheel.stl"/ -->
         <cylinder length="0.2" radius="0.2"/>
       </geometry>
       <material name="WheelBlack">
@@ -90,7 +90,7 @@
     <visual>
       <origin rpy="-1.570795 0 0" xyz="0 0 0"/>
       <geometry name="skj_wheel_geom">
-        <!-- mesh filename="package://amr_robots_description/meshes/skj_meshes/wheel.stl"/ -->
+        <!-- mesh filename="package://amr-ros-config/meshes/skj_meshes/wheel.stl"/ -->
         <cylinder length="0.2" radius="0.2"/>
       </geometry>
       <material name="WheelBlack">
@@ -139,7 +139,7 @@
     <visual>
       <origin rpy="-1.570795 0 0" xyz="0 0 0"/>
       <geometry name="skj_wheel_geom">
-        <!-- mesh filename="package://amr_robots_description/meshes/skj_meshes/wheel.stl"/ -->
+        <!-- mesh filename="package://amr-ros-config/meshes/skj_meshes/wheel.stl"/ -->
         <cylinder length="0.2" radius="0.2"/>
       </geometry>
       <material name="WheelBlack">
@@ -188,7 +188,7 @@
     <visual>
       <origin rpy="-1.570795 0 0" xyz="0 0 0"/>
       <geometry name="skj_wheel_geom">
-        <!-- mesh filename="package://amr_robots_description/meshes/skj_meshes/wheel.stl"/ -->
+        <!-- mesh filename="package://amr-ros-config/meshes/skj_meshes/wheel.stl"/ -->
         <cylinder length="0.2" radius="0.2"/>
       </geometry>
       <material name="WheelBlack">

@@ -35,7 +35,7 @@
         <geometry>
           <mesh>
             <scale>0.001 0.001 0.001</scale>
-            <uri>model://amr_robots_description/meshes/pioneer-lx/pioneer-lx_visual.stl</uri>
+            <uri>model://amr-ros-config/meshes/pioneer-lx/pioneer-lx_visual.stl</uri>
           </mesh>
         </geometry>
       </visual>

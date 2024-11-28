@@ -19,7 +19,7 @@
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
-            <uri>model://amr_robots_description/meshes/p3at_meshes/chassis.stl</uri>
+            <uri>model://amr-ros-config/meshes/p3at_meshes/chassis.stl</uri>
           </mesh>
         </geometry>
         <surface>
@@ -148,7 +148,7 @@
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
-            <uri>model://amr_robots_description/meshes/p3at_meshes/axle.stl</uri>
+            <uri>model://amr-ros-config/meshes/p3at_meshes/axle.stl</uri>
           </mesh>
         </geometry>
         <surface>
@@ -165,7 +165,7 @@
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
-            <uri>model://amr_robots_description/meshes/p3at_meshes/left_hubcap.stl</uri>
+            <uri>model://amr-ros-config/meshes/p3at_meshes/left_hubcap.stl</uri>
           </mesh>
         </geometry>
         <surface>
@@ -182,7 +182,7 @@
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
-            <uri>model://amr_robots_description/meshes/p3at_meshes/axle.stl</uri>
+            <uri>model://amr-ros-config/meshes/p3at_meshes/axle.stl</uri>
           </mesh>
         </geometry>
         <surface>
@@ -199,7 +199,7 @@
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
-            <uri>model://amr_robots_description/meshes/p3at_meshes/right_hubcap.stl</uri>
+            <uri>model://amr-ros-config/meshes/p3at_meshes/right_hubcap.stl</uri>
           </mesh>
         </geometry>
         <surface>
@@ -216,7 +216,7 @@
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
-            <uri>model://amr_robots_description/meshes/p3at_meshes/chassis.stl</uri>
+            <uri>model://amr-ros-config/meshes/p3at_meshes/chassis.stl</uri>
           </mesh>
         </geometry>
         <material>
@@ -231,7 +231,7 @@
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
-            <uri>model://amr_robots_description/meshes/p3at_meshes/back_sonar.stl</uri>
+            <uri>model://amr-ros-config/meshes/p3at_meshes/back_sonar.stl</uri>
           </mesh>
         </geometry>
         <material>
@@ -246,7 +246,7 @@
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
-            <uri>model://amr_robots_description/meshes/p3at_meshes/front_sonar.stl</uri>
+            <uri>model://amr-ros-config/meshes/p3at_meshes/front_sonar.stl</uri>
           </mesh>
         </geometry>
         <material>
@@ -261,7 +261,7 @@
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
-            <uri>model://amr_robots_description/meshes/p3at_meshes/axle.stl</uri>
+            <uri>model://amr-ros-config/meshes/p3at_meshes/axle.stl</uri>
           </mesh>
         </geometry>
         <material>
@@ -276,7 +276,7 @@
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
-            <uri>model://amr_robots_description/meshes/p3at_meshes/left_hubcap.stl</uri>
+            <uri>model://amr-ros-config/meshes/p3at_meshes/left_hubcap.stl</uri>
           </mesh>
         </geometry>
         <material>
@@ -291,7 +291,7 @@
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
-            <uri>model://amr_robots_description/meshes/p3at_meshes/axle.stl</uri>
+            <uri>model://amr-ros-config/meshes/p3at_meshes/axle.stl</uri>
           </mesh>
         </geometry>
         <material>
@@ -306,7 +306,7 @@
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
-            <uri>model://amr_robots_description/meshes/p3at_meshes/right_hubcap.stl</uri>
+            <uri>model://amr-ros-config/meshes/p3at_meshes/right_hubcap.stl</uri>
           </mesh>
         </geometry>
         <material>
@@ -321,7 +321,7 @@
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
-            <uri>model://amr_robots_description/meshes/p3at_meshes/top.stl</uri>
+            <uri>model://amr-ros-config/meshes/p3at_meshes/top.stl</uri>
           </mesh>
         </geometry>
         <material>
@@ -336,7 +336,7 @@
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
-            <uri>model://amr_robots_description/meshes/p3at_meshes/axle.stl</uri>
+            <uri>model://amr-ros-config/meshes/p3at_meshes/axle.stl</uri>
           </mesh>
         </geometry>
         <material>
@@ -351,7 +351,7 @@
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
-            <uri>model://amr_robots_description/meshes/p3at_meshes/left_hubcap.stl</uri>
+            <uri>model://amr-ros-config/meshes/p3at_meshes/left_hubcap.stl</uri>
           </mesh>
         </geometry>
         <material>
@@ -366,7 +366,7 @@
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
-            <uri>model://amr_robots_description/meshes/p3at_meshes/axle.stl</uri>
+            <uri>model://amr-ros-config/meshes/p3at_meshes/axle.stl</uri>
           </mesh>
         </geometry>
         <material>
@@ -381,7 +381,7 @@
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
-            <uri>model://amr_robots_description/meshes/p3at_meshes/right_hubcap.stl</uri>
+            <uri>model://amr-ros-config/meshes/p3at_meshes/right_hubcap.stl</uri>
           </mesh>
         </geometry>
         <material>
@@ -459,7 +459,7 @@
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
-            <uri>model://amr_robots_description/meshes/p3at_meshes/wheel.stl</uri>
+            <uri>model://amr-ros-config/meshes/p3at_meshes/wheel.stl</uri>
           </mesh>
         </geometry>
         <material>
@@ -549,7 +549,7 @@
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
-            <uri>model://amr_robots_description/meshes/p3at_meshes/wheel.stl</uri>
+            <uri>model://amr-ros-config/meshes/p3at_meshes/wheel.stl</uri>
           </mesh>
         </geometry>
         <material>
@@ -639,7 +639,7 @@
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
-            <uri>model://amr_robots_description/meshes/p3at_meshes/wheel.stl</uri>
+            <uri>model://amr-ros-config/meshes/p3at_meshes/wheel.stl</uri>
           </mesh>
         </geometry>
         <material>
@@ -729,7 +729,7 @@
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
-            <uri>model://amr_robots_description/meshes/p3at_meshes/wheel.stl</uri>
+            <uri>model://amr-ros-config/meshes/p3at_meshes/wheel.stl</uri>
           </mesh>
         </geometry>
         <material>

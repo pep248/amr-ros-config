@@ -30,7 +30,7 @@ including macro. -->
 
     <visual name="base_link_visual">
       <geometry name="base_link_visual_geom">
-        <mesh filename="package://amr_robots_description/meshes/pioneer-lx/pioneer-lx_visual.stl" scale="0.001 0.001 0.001" />
+        <mesh filename="package://amr-ros-config/meshes/pioneer-lx/pioneer-lx_visual.stl" scale="0.001 0.001 0.001" />
         <!-- box size="0.697 0.5 0.333" / -->
       </geometry>
       <origin xyz="0 0 0" rpy="0 0 1.570796" /> 
@@ -170,7 +170,7 @@ TODO separate out pioner lx wheels in visual model
   
     <visual name="plinth_visual">
       <geometry name="plinth_visual_geom">
-        <mesh filename="package://amr_robots_description/meshes/pioneer-lx/pioneer-lx-plinth.stl" scale="0.001 0.001 0.001" />
+        <mesh filename="package://amr-ros-config/meshes/pioneer-lx/pioneer-lx-plinth.stl" scale="0.001 0.001 0.001" />
         <!-- box size="0.18 0.2476 0.99" / -->
       </geometry>
       <material name="plinth_darkgrey_mat">
@@ -180,7 +180,7 @@ TODO separate out pioner lx wheels in visual model
 
     <collision name="plinth_collision">
       <geometry name="plinth_collision_geom">
-        <mesh filename="package://amr_robots_description/meshes/pioneer-lx/pioneer-lx-plinth.stl" scale="0.001 0.001 0.001" />
+        <mesh filename="package://amr-ros-config/meshes/pioneer-lx/pioneer-lx-plinth.stl" scale="0.001 0.001 0.001" />
         <!-- box size="0.18 0.2476 0.99" / -->
         <origin xyz="-0.02 0 0.867" />
       </geometry>

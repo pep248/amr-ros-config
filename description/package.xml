@@ -1,5 +1,5 @@
 <package>
-  <name>amr_robots_description</name>
+  <name>amr-ros-config</name>
   <version>1.0.0</version>
   <description>URDF file descriptions for various Adept MobileRobots/ActivMedia robots</description>
   <maintainer email="reed.hedges@adept.com">Reed Hedges</maintainer> 

@@ -14,7 +14,7 @@ URDF
 ----
 
 URDF robot model descriptions can be found in the `description` subdirectory. This
-directory contains a ROS package named `amr_robots_description`.
+directory contains a ROS package named `amr-ros-config`.
 The Pioneer 3 DX and Pioneer 3 AT are
 based on various sources including` p2os_urdf` from the allenh1 `p2os` package (Allen Hunter/Vanderbuilt
 version), Dereck Wonnacott, the
@@ -22,7 +22,7 @@ original `p2os` package, and others.  Other URDF models have been added
 by Adept MobileRobots.  Some URDF files might be useable as models
 in Gazebo (see Gazebo below).
 
-For more details on using these models and the `amr_robots_description` package, see [description/README.md](description/README.md)
+For more details on using these models and the `amr-ros-config` package, see [description/README.md](description/README.md)
 
 This repository has been started by MobileRobots as a single easy to find and maintain location,
 but is also a collaborative effort among the user community, please submit any fixes and improvements using the

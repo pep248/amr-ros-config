@@ -1,5 +1,5 @@
 <launch>
-  <arg name="urdf" default="$(find amr_robots_description)/urdf/pioneer3at.urdf" />
+  <arg name="urdf" default="$(find amr-ros-config)/urdf/pioneer3at.urdf" />
   <arg name="x" default="0" />
   <arg name="y" default="0" />
   <arg name="z" default="0.5" />
