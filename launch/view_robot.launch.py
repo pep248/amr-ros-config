@@ -1,51 +1,29 @@
 from launch import LaunchDescription
-from launch.actions import DeclareLaunchArgument
-from launch.substitutions import LaunchConfiguration
 from launch_ros.actions import Node
 from ament_index_python.packages import get_package_share_directory
 import os
 from xacro import process_file
 
 def generate_launch_description():
-    # Define valid robot models
+    # Define the path to your xacro file
+    package_name = 'amr-ros-config'
     
-    model = 'pioneer3dx'
-    
-    VALID_ROBOT_MODELS = [
-        'pioneer-lx',
-        'pioneer3at',
-        'pioneer3dx',
-        'powerbot',
-        'seekurjr',
-        'terabot-arm'
-    ]
-
-    # Function to get the xacro file path based on robot model
-        
-    xacro_path = os.path.join(
-            get_package_share_directory('amr-ros-config'),
-            'urdf',
-            f'{model}.urdf.xacro'
-        )
-
-    robot_description_content = process_file(xacro_path).toxml()
-    
-    # Declare the robot description argument, using dynamic substitution
-    declare_robot_description = DeclareLaunchArgument(
-        'robot_description',
-        default_value=robot_description_content,
-        description='Robot description in URDF format',
+    xacro_file_path = os.path.join(
+        get_package_share_directory(package_name),
+        'urdf',
+        'pioneer3dx.urdf.xacro'
     )
 
-    return LaunchDescription([
-        declare_robot_description,
+    # Process the xacro file to generate URDF content
+    urdf_file = process_file(xacro_file_path).toxml()
 
-        # Load and visualize the robot URDF in RViz
+    return LaunchDescription([
+        # Load and visualize the laser's URDF in RViz
         Node(
             package='robot_state_publisher',
             executable='robot_state_publisher',
             output='screen',
-            parameters=[{'robot_description': LaunchConfiguration('robot_description')}],
+            parameters=[{'robot_description': urdf_file}],
         ),
 
         # Launch RViz with a pre-configured config file if available
@@ -55,7 +33,7 @@ def generate_launch_description():
             name='rviz2',
             output='screen',
             arguments=['-d', os.path.join(
-                get_package_share_directory('amr-ros-config'),
+                get_package_share_directory(package_name),
                 'rviz',  # Folder containing RViz config (optional)
                 'view_robot.rviz')]  # Optional pre-saved RViz config file
         ),

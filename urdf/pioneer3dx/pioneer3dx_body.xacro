@@ -7,7 +7,7 @@
 	   xmlns:xacro="http://ros.org/wiki/xacro"
 	   >
 
-	<xacro:include filename="$(find amr-ros-config)/urdf/pioneer3dx_wheel.xacro"/>
+	<xacro:include filename="$(find amr-ros-config)/urdf/pioneer3dx/pioneer3dx_wheel.xacro"/>
 
 	<!-- Chassis description -->
 	<link name="base_link">
