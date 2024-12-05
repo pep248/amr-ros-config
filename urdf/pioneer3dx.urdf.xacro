@@ -4,11 +4,8 @@
   <!-- Include the Pioneer3DX macro -->
   <xacro:include filename="$(find amr-ros-config)/urdf/pioneer3dx/pioneer3dx.urdf.xacro"/>
 
-  <!-- Create world link -->
-  <link name="world"/>
-
   <!-- Instantiate the Pioneer3DX -->
-  <xacro:pioneer3dx prefix="pioneer3dx_robot" parent="world">
+  <xacro:pioneer3dx prefix="pioneer3dx_robot">
     <origin xyz="0 0 0" rpy="0 0 0"/>
   </xacro:pioneer3dx>
 

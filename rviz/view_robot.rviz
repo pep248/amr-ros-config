@@ -66,6 +66,7 @@ Visualization Manager:
           Alpha: 1
           Show Axes: false
           Show Trail: false
+          Value: true
         pioneer3dx_robotbase_link:
           Alpha: 1
           Show Axes: false
@@ -80,6 +81,7 @@ Visualization Manager:
           Alpha: 1
           Show Axes: false
           Show Trail: false
+          Value: true
         pioneer3dx_robotcaster_wheel:
           Alpha: 1
           Show Axes: false
@@ -89,6 +91,7 @@ Visualization Manager:
           Alpha: 1
           Show Axes: false
           Show Trail: false
+          Value: true
         pioneer3dx_robotleft_hub:
           Alpha: 1
           Show Axes: false
@@ -98,6 +101,7 @@ Visualization Manager:
           Alpha: 1
           Show Axes: false
           Show Trail: false
+          Value: true
         pioneer3dx_robotright_hub:
           Alpha: 1
           Show Axes: false
@@ -107,14 +111,12 @@ Visualization Manager:
           Alpha: 1
           Show Axes: false
           Show Trail: false
+          Value: true
         pioneer3dx_robottop_plate:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-        world:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
+          Value: true
       Mass Properties:
         Inertia: false
         Mass: false
@@ -128,10 +130,6 @@ Visualization Manager:
       Frame Timeout: 15
       Frames:
         All Enabled: false
-        base_link:
-          Value: true
-        odom:
-          Value: true
         pioneer3dx_robotback_sonar:
           Value: false
         pioneer3dx_robotbase_link:
@@ -154,38 +152,35 @@ Visualization Manager:
           Value: true
         pioneer3dx_robottop_plate:
           Value: false
-        world:
-          Value: true
       Marker Scale: 0.6000000238418579
       Name: TF
       Show Arrows: true
       Show Axes: true
       Show Names: true
       Tree:
-        world:
-          pioneer3dx_robotbase_link:
-            pioneer3dx_robotback_sonar:
-              {}
-            pioneer3dx_robotcaster_swivel:
-              pioneer3dx_robotcaster_wheel:
-                pioneer3dx_robotcaster_hubcap:
-                  {}
-            pioneer3dx_robotfront_sonar:
-              {}
-            pioneer3dx_robotleft_hub:
-              pioneer3dx_robotleft_wheel:
+        pioneer3dx_robotbase_link:
+          pioneer3dx_robotback_sonar:
+            {}
+          pioneer3dx_robotcaster_swivel:
+            pioneer3dx_robotcaster_wheel:
+              pioneer3dx_robotcaster_hubcap:
                 {}
-            pioneer3dx_robotright_hub:
-              pioneer3dx_robotright_wheel:
-                {}
-            pioneer3dx_robottop_plate:
+          pioneer3dx_robotfront_sonar:
+            {}
+          pioneer3dx_robotleft_hub:
+            pioneer3dx_robotleft_wheel:
               {}
+          pioneer3dx_robotright_hub:
+            pioneer3dx_robotright_wheel:
+              {}
+          pioneer3dx_robottop_plate:
+            {}
       Update Interval: 0
       Value: true
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
-    Fixed Frame: world
+    Fixed Frame: pioneer3dx_robotbase_link
     Frame Rate: 30
   Name: root
   Tools:
@@ -243,10 +238,10 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.13039754331111908
+      Pitch: 0.355397492647171
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 0.9890269041061401
+      Yaw: 0.9190269708633423
     Saved: ~
 Window Geometry:
   Displays:
@@ -262,5 +257,5 @@ Window Geometry:
   Views:
     collapsed: false
   Width: 1908
-  X: 1894
-  Y: -5
+  X: 1888
+  Y: -32
