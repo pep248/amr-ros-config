@@ -114,6 +114,8 @@
 			<axis xyz="0 0 1"/>
 			<parent link="${prefix}base_link"/>
 			<child link="${prefix}caster_swivel"/>
+			<limit effort="10000.0" lower="-100000" upper="100000" velocity="100000"/>
+    		<dynamics damping="0.1" friction="0.1"/>
 		</joint>
 
 		<link name="${prefix}caster_swivel">
@@ -172,6 +174,8 @@
 			<axis xyz="0 0 1"/>
 			<parent link="${prefix}caster_swivel"/>
 			<child link="${prefix}caster_wheel"/>
+			<limit effort="10000.0" lower="-100000" upper="100000" velocity="100000"/>
+    		<dynamics damping="0.1" friction="0.1"/>
 		</joint>
 		
 		<link name="${prefix}caster_wheel">
@@ -295,7 +299,7 @@
 		</link>
 
 		<joint name="${prefix}right_wheel_joint" type="continuous">
-			<origin xyz="0 0 0" rpy="1.5708 0 0"/>
+			<origin xyz="0 0 0" rpy="-1.5708 0 0"/>
 			<axis xyz="0 0 1"/>
 			<parent link="${prefix}right_hub"/>
 			<child link="${prefix}right_wheel"/>
