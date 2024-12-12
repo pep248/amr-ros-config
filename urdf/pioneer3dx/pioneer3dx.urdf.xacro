@@ -109,7 +109,7 @@
 		</link>
 
 		<!-- Caster Swivel -->
-		<joint name="${prefix}base_caster_swivel_joint" type="continuous">
+		<joint name="${prefix}base_caster_swivel_joint" type="fixed"> <!--Not fixed. Change for simulation -->
 			<origin xyz="-0.185 0 0.055" rpy="0 0 0"/>
 			<axis xyz="0 0 1"/>
 			<parent link="${prefix}base_link"/>
@@ -117,6 +117,7 @@
 			<limit effort="10000.0" lower="-100000" upper="100000" velocity="100000"/>
     		<dynamics damping="0.1" friction="0.1"/>
 		</joint>
+		<passive_joint name="${prefix}base_caster_swivel_joint"/> <!--Not working -->
 
 		<link name="${prefix}caster_swivel">
 			<inertial>
@@ -169,7 +170,7 @@
 		</gazebo>
 
 		<!-- Caster Wheel -->
-		<joint name="${prefix}caster_swivel_hubcap_joint" type="continuous">
+		<joint name="${prefix}caster_swivel_hubcap_joint" type="fixed"> <!--Not fixed. Change for simulation -->
 			<origin xyz="-0.026 0 -0.016" rpy="1.5708 0 0"/>
 			<axis xyz="0 0 1"/>
 			<parent link="${prefix}caster_swivel"/>
@@ -177,6 +178,7 @@
 			<limit effort="10000.0" lower="-100000" upper="100000" velocity="100000"/>
     		<dynamics damping="0.1" friction="0.1"/>
 		</joint>
+		<passive_joint name="${prefix}caster_swivel_hubcap_joint"/> <!--Not working -->
 		
 		<link name="${prefix}caster_wheel">
 			<inertial>
