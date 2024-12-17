@@ -48,6 +48,7 @@ ament_auto_find_build_dependencies()
 # Install config dependencies
 install(
   DIRECTORY
+    config
     meshes
     urdf
     rviz
