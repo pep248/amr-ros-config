@@ -128,7 +128,7 @@
 		</gazebo>
 
 		<!-- Caster Swivel -->
-		<joint name="${prefix}base_caster_swivel_joint" type="fixed"> <!--Not fixed. Change for simulation -->
+		<joint name="${prefix}base_caster_swivel_joint" type="continuous"> <!--Not fixed. Change for simulation -->
 			<origin xyz="-0.185 0 0.055" rpy="0 0 0"/>
 			<axis xyz="0 0 1"/>
 			<parent link="${prefix}real_base_link"/>
@@ -224,7 +224,7 @@
 			<material value="Gazebo/Black"/>
 		</gazebo>
 
-		<joint name="${prefix}caster_wheel_joint" type="fixed">  <!--Not fixed. Change for simulation -->
+		<joint name="${prefix}caster_wheel_joint" type="continuous">  <!--Not fixed. Change for simulation -->
 			<origin xyz="-0.0035 0 -0.001" rpy="0 0 0"/>
 			<axis xyz="0 0 1"/>
 			<parent link="${prefix}caster_hubcap"/>
