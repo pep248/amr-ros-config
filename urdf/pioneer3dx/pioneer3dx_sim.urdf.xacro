@@ -14,8 +14,8 @@
 		<xacro:property name="chassis_width" value="0.272"/>
 		<xacro:property name="chassis_height" value="0.172"/>
 		<link name="${prefix}real_base_link">
-			<xacro:inertial_box mass="7.0" x="${chassis_length}" y="${chassis_width}" z="${chassis_height}">
-            	<origin xyz="${-chassis_length/2} 0 ${chassis_height/2}" rpy="0 0 0"/>
+			<xacro:inertial_box mass="3.5" x="${-chassis_length}" y="${chassis_width}" z="${chassis_height}">
+            	<origin xyz="0 0 0" rpy="0 0 0"/>
         	</xacro:inertial_box>
 			<visual>
 				<origin xyz="-0.045 0 0.148" rpy="0 0 0"/>
@@ -47,7 +47,7 @@
 		<xacro:property name="top_plate_width" value="0.272"/>
 		<xacro:property name="top_plate_height" value="0.0052"/>
 		<link name="${prefix}top_plate">
-			<xacro:inertial_box mass="0.1" x="${top_plate_length}" y="${top_plate_width}" z="${top_plate_height}">
+			<xacro:inertial_box mass="0.001" x="${top_plate_length}" y="${top_plate_width}" z="${top_plate_height}">
             	<origin xyz="${chassis_length/2} 0 ${chassis_height/2}" rpy="0 0 0"/>
         	</xacro:inertial_box>
 			<visual>
@@ -128,7 +128,7 @@
 		</gazebo>
 
 		<!-- Caster Swivel -->
-		<joint name="${prefix}base_caster_swivel_joint" type="continuous"> <!--Not fixed. Change for simulation -->
+		<joint name="${prefix}base_caster_swivel_joint" type="fixed"> <!--Not fixed. Change for simulation -->
 			<origin xyz="-0.185 0 0.055" rpy="0 0 0"/>
 			<axis xyz="0 0 1"/>
 			<parent link="${prefix}real_base_link"/>
@@ -201,7 +201,7 @@
 
 		<!-- Caster Wheel -->
 		<link name="${prefix}caster_wheel">
-			<xacro:inertial_cylinder mass="0.2" length="0.01" radius="0.0375">
+			<xacro:inertial_cylinder mass="2.0" length="0.01" radius="0.0375">
 				<origin xyz="0 0 0" rpy="0 0 0"/>
 			</xacro:inertial_cylinder>
 			<visual>
@@ -222,9 +222,11 @@
 
 		<gazebo reference="${prefix}caster_wheel">
 			<material value="Gazebo/Black"/>
+			<mu1 value="0.0001"/>
+        	<mu2 value="0.0001"/>
 		</gazebo>
 
-		<joint name="${prefix}caster_wheel_joint" type="continuous">  <!--Not fixed. Change for simulation -->
+		<joint name="${prefix}caster_wheel_joint" type="fixed">  <!--Not fixed. Change for simulation -->
 			<origin xyz="-0.0035 0 -0.001" rpy="0 0 0"/>
 			<axis xyz="0 0 1"/>
 			<parent link="${prefix}caster_hubcap"/>
@@ -247,7 +249,7 @@
 				</geometry>
 			</collision> -->
 			<inertial>
-				<mass value="0.1"/>
+				<mass value="0.01"/>
 				<origin xyz="0 0 0" rpy="${-3.1415927/2.0} 0 0"/>
 				<inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
 			</inertial>
@@ -276,10 +278,10 @@
 			<collision>
 				<origin xyz="0 0 0" rpy="0 0 0"/>
 				<geometry>
-					<cylinder radius="0.09" length="0.04"/>
+					<sphere radius="0.09"/>
 				</geometry>
 			</collision>
-			<xacro:inertial_cylinder mass="2.0" length="0.04" radius="0.09">
+			<xacro:inertial_cylinder mass="0.5" length="0.04" radius="0.09">
 				<origin xyz="0 0 0" rpy="0 0 0"/>
 			</xacro:inertial_cylinder>
 			<dynamics damping="0" friction="10.0"/>
@@ -287,6 +289,8 @@
 
 		<gazebo reference="${prefix}left_wheel">
 			<material value="Gazebo/Black"/>
+			<mu1 value="0.9"/>
+        	<mu2 value="0.9"/>
 		</gazebo>
 
 		<joint name="${prefix}left_wheel_joint" type="continuous">
@@ -313,7 +317,7 @@
 				</geometry>
 			</collision> -->
 			<inertial>
-				<mass value="0.1"/>
+				<mass value="0.01"/>
 				<origin xyz="0 0 0" rpy="${3.1415927/2.0} 0 0"/>
 				<inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
 			</inertial>
@@ -340,10 +344,10 @@
 			<collision>
 				<origin xyz="0 0 0" rpy="0 0 0"/>
 				<geometry>
-					<cylinder radius="0.09" length="0.04"/>
+					<sphere radius="0.09"/>
 				</geometry>
 			</collision>
-			<xacro:inertial_cylinder mass="2.0" length="0.04" radius="0.09">
+			<xacro:inertial_cylinder mass="0.5" length="0.04" radius="0.09">
 				<origin xyz="0 0 0" rpy="0 0 0"/>
 			</xacro:inertial_cylinder>
 			<dynamics damping="0" friction="10.0"/>
@@ -351,6 +355,8 @@
 
 		<gazebo reference="${prefix}right_wheel">
 			<material value="Gazebo/Black"/>
+			<mu1 value="0.9"/>
+        	<mu2 value="0.9"/>
 		</gazebo>
 
 		<joint name="${prefix}right_wheel_joint" type="continuous">
