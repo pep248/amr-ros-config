@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+    <xacro:macro name="pioneer3dx_collision_controller" params="link_name prefix">
+
+        <!-- found name via: gz sdf -p turtlebot3_burger.urdf.xacro > robot.sdf -->
+        <gazebo reference="${prefix}${link_name}">
+            <sensor name="${prefix}${link_name}_collision_sensor" type="contact">
+                <always_on>true</always_on>
+                <update_rate>10.0</update_rate>
+                <contact>
+                    <collision>${prefix}${link_name}_base_link_collision</collision>
+                </contact>
+                <plugin name="collision_sensor" filename="libgazebo_ros_bumper.so">
+                    <bumperTopicName>${prefix}${link_name}_bumper</bumperTopicName>
+                    <ros>
+                        <remapping>bumper_states:=${prefix}${link_name}_bumper_states</remapping>
+                    </ros>
+                </plugin>
+            </sensor>
+        </gazebo>
+
+    </xacro:macro>
+
+</robot>
