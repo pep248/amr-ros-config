@@ -6,7 +6,25 @@
                 <parameters>$(find amr-ros-config)/config/controller_config.yaml</parameters>
 				<parameters>$(find amr-ros-config)/config/gazebo_params.yaml</parameters>
             </plugin>
+
+            <plugin name="gazebo_ros_p3d" filename="libgazebo_ros_p3d.so">
+                <ros>
+                    <!-- Use your desired namespace or leave empty for default -->
+                    <namespace>/galax_robot</namespace>
+                    <!-- The topic name where the position will be published -->
+                    <remapping>odom:=/galax_pose</remapping>
+                </ros>
+                <!-- Replace with your robot's main link -->
+                <body_name>pioneer3dx_base_link</body_name>
+                <!-- Update rate in Hz -->
+                <update_rate>30.0</update_rate>
+                <xyzOffsets>0 0 0</xyzOffsets>
+                <rpyOffsets>0 0 0</rpyOffsets>
+            </plugin>
+
         </gazebo>
+
+        
 
         <ros2_control name="GazeboSystem" type="system">
             <hardware>
