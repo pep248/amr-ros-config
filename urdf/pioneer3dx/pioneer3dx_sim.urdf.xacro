@@ -210,7 +210,7 @@
 					<cylinder radius="0.0375" length="0.01"/>
 				</geometry>
 			</collision>
-			<dynamics damping="10.0" friction="0"/>
+			<dynamics damping="0.0001" friction="0.0001"/>
 		</link>
 
 		<gazebo reference="${prefix}caster_wheel">
@@ -229,6 +229,7 @@
 			<axis xyz="0 0 1"/>
 			<parent link="${prefix}caster_hubcap"/>
 			<child link="${prefix}caster_wheel"/>
+			<dynamics damping="1.0" friction="1.0"/>
 		</joint>
 		
 		<!-- Left Wheel -->
@@ -279,10 +280,10 @@
 					<sphere radius="0.09"/>
 				</geometry>
 			</collision>
-			<xacro:inertial_cylinder mass="20.0" length="0.04" radius="0.09">
+			<xacro:inertial_cylinder mass="2.0" length="0.04" radius="0.09">
 				<origin xyz="0 0 0" rpy="0 0 0"/>
 			</xacro:inertial_cylinder>
-			<dynamics damping="0" friction="10.0"/>
+			<dynamics damping="1.0" friction="1.0"/>
 		</link>
 
 		<gazebo reference="${prefix}left_wheel">
@@ -301,7 +302,7 @@
 			<axis xyz="0 0 1"/>
 			<parent link="${prefix}left_hub"/>
 			<child link="${prefix}left_wheel"/>
-			<dynamics damping="0.001" friction="0.0001"/>
+			<dynamics damping="1.0" friction="1.0"/>
 		</joint>
 
 		<!-- Right Wheel -->
@@ -344,10 +345,10 @@
 					<sphere radius="0.09"/>
 				</geometry>
 			</collision>
-			<xacro:inertial_cylinder mass="20.0" length="0.04" radius="0.09">
+			<xacro:inertial_cylinder mass="2.0" length="0.04" radius="0.09">
 				<origin xyz="0 0 0" rpy="0 0 0"/>
 			</xacro:inertial_cylinder>
-			<dynamics damping="0" friction="10.0"/>
+			<!-- <dynamics damping="1.0" friction="1.0"/> -->
 		</link>
 
 		<gazebo reference="${prefix}right_wheel">
@@ -366,7 +367,7 @@
 			<axis xyz="0 0 1"/>
 			<parent link="${prefix}right_hub"/>
 			<child link="${prefix}right_wheel"/>
-			<dynamics damping="0.001" friction="0.0001"/>
+			<dynamics damping="1.0" friction="1.0"/>
 		</joint>
 
 		<!-- <gazebo>
