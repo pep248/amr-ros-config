@@ -302,7 +302,7 @@
 			<axis xyz="0 0 1"/>
 			<parent link="${prefix}left_hub"/>
 			<child link="${prefix}left_wheel"/>
-			<dynamics damping="0.1" friction="1.2"/>
+			<dynamics damping="0.1" friction="1.0"/>
 		</joint>
 
 		<!-- Right Wheel -->
@@ -367,7 +367,7 @@
 			<axis xyz="0 0 1"/>
 			<parent link="${prefix}right_hub"/>
 			<child link="${prefix}right_wheel"/>
-			<dynamics damping="0.1" friction="1.2"/>
+			<dynamics damping="0.1" friction="1.0"/>
 		</joint>
 
 		<!-- <gazebo>
