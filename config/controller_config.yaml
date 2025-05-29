@@ -21,7 +21,7 @@ differential_controller:
     # left_wheel_radius_multiplier: 1.0
     # right_wheel_radius_multiplier: 1.0
 
-    # odom_frame_id: pioneer3dx_odom
+    odom_frame_id: pioneer3dx_odom
     base_frame_id: pioneer3dx_base_link
     # pose_covariance_diagonal: [0.001, 0.001, 0.001, 0.001, 0.001, 0.01]
     # twist_covariance_diagonal: [0.001, 0.001, 0.001, 0.001, 0.001, 0.01]

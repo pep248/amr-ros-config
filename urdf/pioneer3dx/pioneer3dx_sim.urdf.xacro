@@ -17,9 +17,9 @@
 		<xacro:property name="top_plate_length" value="0.41"/>
 		<xacro:property name="top_plate_width" value="0.272"/>
 		<xacro:property name="top_plate_height" value="0.0052"/>
-		<xacro:property name="top_plate_mass" value="1.0"/>
+		<xacro:property name="top_plate_mass" value="0.1"/>
 		<!-- Wheels -->
-		<xacro:property name="wheel_radius" value="0.09"/>
+		<xacro:property name="wheel_radius" value="0.009"/>
 		<xacro:property name="wheel_thickness" value="0.04"/>
 		<xacro:property name="wheel_mass" value="0.1"/>
 		<!-- Caster wheel -->
@@ -74,7 +74,7 @@
 				</geometry>
 				<material name="TopBlack"/>
 			</visual>
-			<xacro:inertial_box mass="1.0" x="${top_plate_length}" y="${top_plate_width}" z="${top_plate_height}">
+			<xacro:inertial_box mass="${top_plate_mass}" x="${top_plate_length}" y="${top_plate_width}" z="${top_plate_height}">
             	<origin xyz="0 0 ${top_plate_height/2}" rpy="0 0 0"/>
         	</xacro:inertial_box>
 		</link>

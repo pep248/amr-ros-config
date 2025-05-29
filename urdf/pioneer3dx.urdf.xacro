@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<robot name="my_robot" xmlns:xacro="http://ros.org/wiki/xacro">
+<robot name="galax_robot" xmlns:xacro="http://ros.org/wiki/xacro">
 
   <!-- Include the Pioneer3DX macro -->
   <xacro:include filename="$(find amr-ros-config)/urdf/pioneer3dx/pioneer3dx.urdf.xacro"/>
