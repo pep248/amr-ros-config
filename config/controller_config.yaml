@@ -27,12 +27,12 @@ differential_controller:
     # twist_covariance_diagonal: [0.001, 0.001, 0.001, 0.001, 0.001, 0.01]
     
     
-    # open_loop: false # If set to true the odometry of the robot will be calculated from the commanded values and not from feedback.
-    # position_feedback: true # Is there position feedback from hardware.
-    # enable_odom_tf: true # Publish transformation between odom_frame_id and base_frame_id.
+    open_loop: false # If set to true the odometry of the robot will be calculated from the commanded values and not from feedback.
+    position_feedback: true # Is there position feedback from hardware.
+    enable_odom_tf: true # Publish transformation between odom_frame_id and base_frame_id.
 
-    # cmd_vel_timeout: 2.0 # Timeout in seconds, after which input command on cmd_vel topic is considered staled.
-    # publish_limited_velocity: false # Publish limited velocity value.
+    cmd_vel_timeout: 2.0 # Timeout in seconds, after which input command on cmd_vel topic is considered staled.
+    publish_limited_velocity: false # Publish limited velocity value.
     #velocity_rolling_window_size: 10 # Size of the rolling window for calculation of mean velocity use in odometry.
     use_stamped_vel: false # Use stamp from input velocity message to calculate how old the command actually is.
     publish_rate: 50.0 # Publishing rate (Hz) of the odometry and TF messages.

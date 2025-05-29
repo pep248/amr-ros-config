@@ -19,7 +19,7 @@
 		<xacro:property name="top_plate_height" value="0.0052"/>
 		<xacro:property name="top_plate_mass" value="0.1"/>
 		<!-- Wheels -->
-		<xacro:property name="wheel_radius" value="0.009"/>
+		<xacro:property name="wheel_radius" value="0.09"/>
 		<xacro:property name="wheel_thickness" value="0.04"/>
 		<xacro:property name="wheel_mass" value="0.1"/>
 		<!-- Caster wheel -->
@@ -44,7 +44,7 @@
 				<material name="ChassisRed"/>
 			</visual>
 			<xacro:inertial_box mass="${chassis_mass}" x="${chassis_length}" y="${chassis_width}" z="${chassis_height}">
-            	<origin xyz="${-chassis_length/2} 0 ${-chassis_height/2}" rpy="0 0 0"/>
+            	<origin xyz="${-chassis_length} 0 ${-chassis_height}" rpy="0 0 0"/>
         	</xacro:inertial_box>
 		</link>
 
@@ -360,8 +360,8 @@
 		</gazebo>
 
 		<joint name="${prefix}right_wheel_joint" type="continuous">
-			<origin xyz="0 0 0" rpy="-1.5708 0 0"/>
-			<axis xyz="0 0 1"/>
+			<origin xyz="0 0 0" rpy="1.5708 0 0"/>
+			<axis xyz="0 0 -1"/>
 			<parent link="${prefix}right_hub"/>
 			<child link="${prefix}right_wheel"/>
 		</joint>
