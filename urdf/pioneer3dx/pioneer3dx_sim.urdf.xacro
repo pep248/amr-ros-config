@@ -8,12 +8,28 @@
 		<link name="${prefix}base_link">
     	</link>
 
-		<!-- Base Link -->
+		<!-- Chassis -->
 		<xacro:property name="chassis_length" value="0.41"/>
 		<xacro:property name="chassis_width" value="0.272"/>
 		<xacro:property name="chassis_height" value="0.172"/>
+		<xacro:property name="chassis_mass" value="1.0"/>
+		<!-- Wheels -->
+		<xacro:property name="wheel_radius" value="0.09"/>
+		<xacro:property name="wheel_thickness" value="0.04"/>
+		<xacro:property name="wheel_mass" value="0.05"/>
+		Caster wheels
+		<xacro:property name="caster_wheel_radius" value="0.01"/>
+		<xacro:property name="caster_wheel_mass" value="0.01"/>
+		<xacro:property name="caster_wheel_offset_x" value="0.075"/>
+		<xacro:property name="caster_wheel_offset_z" value="${wheel_offset_z - wheel_radius + caster_wheel_radius}"/>
+
+
+
+
+		<!-- Base Link -->
+
 		<link name="${prefix}real_base_link">
-			<xacro:inertial_box mass="30.0" x="${chassis_length}" y="${chassis_width}" z="${chassis_height}">
+			<xacro:inertial_box mass="${chassis_mass}" x="${chassis_length}" y="${chassis_width}" z="${chassis_height}">
             	<origin xyz="${-chassis_length/2} 0 ${chassis_height/2}" rpy="0 0 0"/>
         	</xacro:inertial_box>
 			<visual>
@@ -247,11 +263,9 @@
 					<cylinder radius="0.09" length="0.01"/>
 				</geometry>
 			</collision> -->
-			<inertial>
-				<mass value="0.1"/>
-				<origin xyz="0 0 0" rpy="${-3.1415927/2.0} 0 0"/>
-				<inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
-			</inertial>
+			<xacro:inertial_cylinder mass="2.0" length="0.01" radius="0.0375">
+				<origin xyz="0 0 0" rpy="0 0 0"/>
+			</xacro:inertial_cylinder>
 		</link>
 
 		<gazebo reference="${prefix}left_hub">
@@ -280,21 +294,13 @@
 					<sphere radius="0.09"/>
 				</geometry>
 			</collision>
-			<xacro:inertial_cylinder mass="20.0" length="0.04" radius="0.09">
+			<xacro:inertial_cylinder mass="0.1" length="${wheel_thickness}" radius="${wheel_radius}">
 				<origin xyz="0 0 0" rpy="0 0 0"/>
 			</xacro:inertial_cylinder>
-			<dynamics damping="1.0" friction="1.0"/>
 		</link>
 
 		<gazebo reference="${prefix}left_wheel">
 			<material value="Gazebo/Black"/>
-			<kp>1000000.0</kp> <!-- kp and kd for rubber -->
-			<kd>100.0</kd>
-			<mu1>1.0</mu1>
-			<mu2>1.0</mu2>
-			<!-- fdir1 0 1 0 /fdir1 --> <!-- see http://github.com/MobileRobots/amr-ros-config/issues/6 -->
-			<maxVel>1.0</maxVel>
-			<minDepth>0.00</minDepth>
 		</gazebo>
 
 		<joint name="${prefix}left_wheel_joint" type="continuous">
@@ -302,7 +308,6 @@
 			<axis xyz="0 0 1"/>
 			<parent link="${prefix}left_hub"/>
 			<child link="${prefix}left_wheel"/>
-			<dynamics damping="0.1" friction="1.0"/>
 		</joint>
 
 		<!-- Right Wheel -->
@@ -314,11 +319,6 @@
 				</geometry>
 				<material name="HubcapYellow"/>
 			</visual>
-			<inertial>
-				<mass value="0.1"/>
-				<origin xyz="0 0 0" rpy="${3.1415927/2.0} 0 0"/>
-				<inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
-			</inertial>
 		</link>
 
 		<gazebo reference="${prefix}right_hub">
@@ -345,21 +345,13 @@
 					<sphere radius="0.09"/>
 				</geometry>
 			</collision>
-			<xacro:inertial_cylinder mass="20.0" length="0.04" radius="0.09">
+			<xacro:inertial_cylinder mass="0.1" length="${wheel_thickness}" radius="${wheel_radius}">
 				<origin xyz="0 0 0" rpy="0 0 0"/>
 			</xacro:inertial_cylinder>
-			<!-- <dynamics damping="1.0" friction="1.0"/> -->
 		</link>
 
 		<gazebo reference="${prefix}right_wheel">
 			<material value="Gazebo/Black"/>
-			<kp>1000000.0</kp> <!-- kp and kd for rubber -->
-			<kd>100.0</kd>
-			<mu1>1.0</mu1>
-			<mu2>1.0</mu2>
-			<!-- fdir1 0 1 0 /fdir1 --> <!-- see http://github.com/MobileRobots/amr-ros-config/issues/6 -->
-			<maxVel>1.0</maxVel>
-			<minDepth>0.01</minDepth>
 		</gazebo>
 
 		<joint name="${prefix}right_wheel_joint" type="continuous">
@@ -367,17 +359,7 @@
 			<axis xyz="0 0 1"/>
 			<parent link="${prefix}right_hub"/>
 			<child link="${prefix}right_wheel"/>
-			<dynamics damping="0.1" friction="1.0"/>
 		</joint>
-
-		<!-- <gazebo>
-			<plugin name="ground_plane" filename="libgazebo_ros_surface_properties.so">
-				<mu>1.0</mu>
-				<mu2>1.0</mu2>
-				<kp>100000</kp>
-				<kd>1</kd>
-			</plugin>
-		</gazebo> -->
 
 	</xacro:macro>
 
