@@ -17,6 +17,7 @@
 		<xacro:property name="top_plate_length" value="0.41"/>
 		<xacro:property name="top_plate_width" value="0.272"/>
 		<xacro:property name="top_plate_height" value="0.0052"/>
+		<xacro:property name="top_plate_mass" value="1.0"/>
 		<!-- Wheels -->
 		<xacro:property name="wheel_radius" value="0.09"/>
 		<xacro:property name="wheel_thickness" value="0.04"/>
@@ -29,12 +30,12 @@
 
 		<!-- Chasis -->
 		<link name="${prefix}real_base_link">
-			<collision>
+			<!-- <collision>
 				<origin xyz="${chassis_length/2} 0 ${chassis_height/2}"/>
 				<geometry>
 					<box size="${chassis_length} ${chassis_width} ${chassis_height}"/>
 				</geometry>
-			</collision>
+			</collision> -->
 			<visual>
 				<origin xyz="-0.045 0 0.148" rpy="0 0 0"/>
 				<geometry>
@@ -43,7 +44,7 @@
 				<material name="ChassisRed"/>
 			</visual>
 			<xacro:inertial_box mass="${chassis_mass}" x="${chassis_length}" y="${chassis_width}" z="${chassis_height}">
-            	<origin xyz="${-chassis_length/2} 0 ${chassis_height/2}" rpy="0 0 0"/>
+            	<origin xyz="${-chassis_length/2} 0 ${-chassis_height/2}" rpy="0 0 0"/>
         	</xacro:inertial_box>
 		</link>
 
@@ -60,12 +61,12 @@
 
 		<!-- Top Plate -->
 		<link name="${prefix}top_plate">
-			<collision>
+			<!-- <collision>
 				<origin xyz="${top_plate_length/2} 0 ${top_plate_height/2}"/>
 				<geometry>
 					<box size="${top_plate_length} ${top_plate_width} ${top_plate_height}"/>
 				</geometry>
-			</collision>
+			</collision> -->
 			<visual>
 				<origin xyz="0 0 0" rpy="0 0 0"/>
 				<geometry>
@@ -169,7 +170,7 @@
 			<material value="Gazebo/Grey"/>
 		</gazebo>
 
-		<joint name="${prefix}base_caster_swivel_joint" type="continuous"> <!--Not fixed. Change for simulation -->
+		<joint name="${prefix}base_caster_swivel_joint" type="fixed"> <!--Not fixed. Change for simulation -->
 			<origin xyz="-0.185 0 0.055" rpy="0 0 0"/>
 			<axis xyz="0 0 1"/>
 			<parent link="${prefix}real_base_link"/>
