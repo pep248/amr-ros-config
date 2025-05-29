@@ -13,25 +13,28 @@
 		<xacro:property name="chassis_width" value="0.272"/>
 		<xacro:property name="chassis_height" value="0.172"/>
 		<xacro:property name="chassis_mass" value="1.0"/>
+		<!-- Top Plate -->
+		<xacro:property name="top_plate_length" value="0.41"/>
+		<xacro:property name="top_plate_width" value="0.272"/>
+		<xacro:property name="top_plate_height" value="0.0052"/>
 		<!-- Wheels -->
 		<xacro:property name="wheel_radius" value="0.09"/>
 		<xacro:property name="wheel_thickness" value="0.04"/>
-		<xacro:property name="wheel_mass" value="0.05"/>
-		Caster wheels
-		<xacro:property name="caster_wheel_radius" value="0.01"/>
-		<xacro:property name="caster_wheel_mass" value="0.01"/>
-		<xacro:property name="caster_wheel_offset_x" value="0.075"/>
-		<xacro:property name="caster_wheel_offset_z" value="${wheel_offset_z - wheel_radius + caster_wheel_radius}"/>
+		<xacro:property name="wheel_mass" value="0.1"/>
+		<!-- Caster wheel -->
+		<xacro:property name="caster_wheel_radius" value="0.0375"/>
+		<xacro:property name="caster_wheel_thickness" value="0.01"/>
+		<xacro:property name="caster_wheel_mass" value="0.02"/>
 
 
-
-
-		<!-- Base Link -->
-
+		<!-- Chasis -->
 		<link name="${prefix}real_base_link">
-			<xacro:inertial_box mass="${chassis_mass}" x="${chassis_length}" y="${chassis_width}" z="${chassis_height}">
-            	<origin xyz="${-chassis_length/2} 0 ${chassis_height/2}" rpy="0 0 0"/>
-        	</xacro:inertial_box>
+			<collision>
+				<origin xyz="${chassis_length/2} 0 ${chassis_height/2}"/>
+				<geometry>
+					<box size="${chassis_length} ${chassis_width} ${chassis_height}"/>
+				</geometry>
+			</collision>
 			<visual>
 				<origin xyz="-0.045 0 0.148" rpy="0 0 0"/>
 				<geometry>
@@ -39,6 +42,9 @@
 				</geometry>
 				<material name="ChassisRed"/>
 			</visual>
+			<xacro:inertial_box mass="${chassis_mass}" x="${chassis_length}" y="${chassis_width}" z="${chassis_height}">
+            	<origin xyz="${-chassis_length/2} 0 ${chassis_height/2}" rpy="0 0 0"/>
+        	</xacro:inertial_box>
 		</link>
 
 		<gazebo reference="${prefix}real_base_link">
@@ -51,14 +57,15 @@
 			<child link="${prefix}real_base_link"/>
 		</joint>
 
+
 		<!-- Top Plate -->
-		<xacro:property name="top_plate_length" value="0.41"/>
-		<xacro:property name="top_plate_width" value="0.272"/>
-		<xacro:property name="top_plate_height" value="0.0052"/>
 		<link name="${prefix}top_plate">
-			<xacro:inertial_box mass="1.0" x="${top_plate_length}" y="${top_plate_width}" z="${top_plate_height}">
-            	<origin xyz="0 0 ${top_plate_height/2}" rpy="0 0 0"/>
-        	</xacro:inertial_box>
+			<collision>
+				<origin xyz="${top_plate_length/2} 0 ${top_plate_height/2}"/>
+				<geometry>
+					<box size="${top_plate_length} ${top_plate_width} ${top_plate_height}"/>
+				</geometry>
+			</collision>
 			<visual>
 				<origin xyz="0 0 0" rpy="0 0 0"/>
 				<geometry>
@@ -66,12 +73,9 @@
 				</geometry>
 				<material name="TopBlack"/>
 			</visual>
-			<collision>
-				<origin xyz="0 0 0" rpy="0 0 0"/>
-				<geometry>
-					<mesh filename="file://$(find amr-ros-config)/meshes/p3dx_meshes/top.stl"/>
-				</geometry>
-			</collision>
+			<xacro:inertial_box mass="1.0" x="${top_plate_length}" y="${top_plate_width}" z="${top_plate_height}">
+            	<origin xyz="0 0 ${top_plate_height/2}" rpy="0 0 0"/>
+        	</xacro:inertial_box>
 		</link>
 
 		<gazebo reference="${prefix}top_plate">
@@ -84,13 +88,9 @@
 			<child link="${prefix}top_plate"/>
 		</joint>
 
+
 		<!-- Front Sonar -->
 		<link name="${prefix}front_sonar">
-			<inertial>
-				<mass value="0.0001"/>	
-				<origin xyz="0 0 0"/>
-				<inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1"/>
-			</inertial>
 			<visual>
 				<origin xyz="0 0 0" rpy="0 0 0"/>
 				<geometry>
@@ -98,6 +98,11 @@
 				</geometry>
 				<material name="SonarYellow"/>
 			</visual>
+			<inertial>
+				<mass value="0.0001"/>	
+				<origin xyz="0 0 0"/>
+				<inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1"/>
+			</inertial>
 		</link>
 
 		<gazebo reference="${prefix}front_sonar">
@@ -110,19 +115,9 @@
 			<child link="${prefix}front_sonar"/>
 		</joint>
 
-		<!-- Back Sonar -->
-		<joint name="${prefix}base_back_joint" type="fixed">
-			<origin xyz="0.109 0 0.209" rpy="0 0 0"/>
-			<parent link="${prefix}real_base_link"/>
-			<child link="${prefix}back_sonar"/>
-		</joint>
 
+		<!-- Back Sonar -->
 		<link name="${prefix}back_sonar">
-			<inertial>
-				<mass value="0.0001"/>	
-				<origin xyz="0 0 0"/>
-				<inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1"/>
-			</inertial>
 			<visual>
 				<origin xyz="0 0 0" rpy="0 0 0"/>
 				<geometry>
@@ -130,29 +125,32 @@
 				</geometry>
 				<material name="SonarYellow"/>
 			</visual>
+			<inertial>
+				<mass value="0.0001"/>	
+				<origin xyz="0 0 0"/>
+				<inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1"/>
+			</inertial>
 		</link>
 
 		<gazebo reference="${prefix}back_sonar">
 			<material value="Gazebo/Yellow"/>
 		</gazebo>
 
-		<!-- Caster Swivel -->
-		<joint name="${prefix}base_caster_swivel_joint" type="continuous"> <!--Not fixed. Change for simulation -->
-			<origin xyz="-0.185 0 0.055" rpy="0 0 0"/>
-			<axis xyz="0 0 1"/>
+		<joint name="${prefix}base_back_joint" type="fixed">
+			<origin xyz="0.109 0 0.209" rpy="0 0 0"/>
 			<parent link="${prefix}real_base_link"/>
-			<child link="${prefix}caster_swivel"/>
-			<limit effort="10000.0" lower="-100000" upper="100000" velocity="100000"/>
-    		<!-- <dynamics damping="0.001" friction="0.0001"/> -->
+			<child link="${prefix}back_sonar"/>
 		</joint>
-		<passive_joint name="${prefix}base_caster_swivel_joint"/> <!--Not working -->
 
+
+		<!-- Caster Swivel -->
 		<link name="${prefix}caster_swivel">
-			<inertial>
-				<mass value="0.1"/>	
-				<origin xyz="0 0 0"/>
-				<inertia ixx="0.01" ixy="0" ixz="0" iyy="0.01" iyz="0" izz="0.01"/>
-			</inertial>
+			<!-- <collision>
+				<origin xyz="0 0 0" rpy="0 0 0"/>
+				<geometry>
+					<mesh filename="file://$(find amr-ros-config)/meshes/p3dx_meshes/caster_swivel.stl"/>
+				</geometry>
+			</collision> -->
 			<visual>
 				<origin xyz="0 0 0" rpy="0 0 0"/>
 				<geometry>
@@ -160,26 +158,32 @@
 				</geometry>
 				<material name="ChassisGrey"/>
 			</visual>
-			<!-- <collision>
-				<origin xyz="0 0 0" rpy="0 0 0"/>
-				<geometry>
-					<mesh filename="file://$(find amr-ros-config)/meshes/p3dx_meshes/caster_swivel.stl"/>
-				</geometry>
-			</collision> -->
+			<inertial>
+				<mass value="0.01"/>	
+				<origin xyz="0 0 0"/>
+				<inertia ixx="0.01" ixy="0" ixz="0" iyy="0.01" iyz="0" izz="0.01"/>
+			</inertial>
 		</link>
 
 		<gazebo reference="${prefix}caster_swivel">
 			<material value="Gazebo/Grey"/>
 		</gazebo>
 
-		<!-- Center Wheel + Hubcap -->
+		<joint name="${prefix}base_caster_swivel_joint" type="continuous"> <!--Not fixed. Change for simulation -->
+			<origin xyz="-0.185 0 0.055" rpy="0 0 0"/>
+			<axis xyz="0 0 1"/>
+			<parent link="${prefix}real_base_link"/>
+			<child link="${prefix}caster_swivel"/>
+		</joint>
+
+		<!-- Hubcap -->
 		<link name="${prefix}caster_hubcap">
-			<inertial>
-				<mass value="0.1"/>	
-				<origin xyz="0 0 0"/>
-				<inertia ixx="0.012411765597" ixy="-0.000711733678" ixz="0.00050272983"
-							iyy="0.015218160428" iyz="-0.000004273467" izz="0.011763977943"/>
-			</inertial>
+			<!-- <collision>
+				<origin xyz="0 0 0" rpy="0 0 0"/>
+				<geometry>
+					<mesh filename="file://$(find amr-ros-config)/meshes/p3dx_meshes/caster_hubcap.stl"/>
+				</geometry>
+			</collision> -->
 			<visual>
 				<origin xyz="0 0 0" rpy="${1.5708} 0 0"/>
 				<geometry>
@@ -187,12 +191,12 @@
 				</geometry>
 				<material name="ChassisGrey"/>
 			</visual>
-			<!-- <collision>
-				<origin xyz="0 0 0" rpy="0 0 0"/>
-				<geometry>
-					<mesh filename="file://$(find amr-ros-config)/meshes/p3dx_meshes/caster_hubcap.stl"/>
-				</geometry>
-			</collision> -->
+			<inertial>
+				<mass value="0.01"/>	
+				<origin xyz="0 0 0"/>
+				<inertia ixx="0.012411765597" ixy="-0.000711733678" ixz="0.00050272983"
+							iyy="0.015218160428" iyz="-0.000004273467" izz="0.011763977943"/>
+			</inertial>
 		</link>
 
 		<gazebo reference="${prefix}caster_hubcap">
@@ -204,40 +208,32 @@
 			<axis xyz="0 0 1"/>
 			<parent link="${prefix}caster_swivel"/>
 			<child link="${prefix}caster_hubcap"/>
-			<limit effort="10000.0" lower="-100000" upper="100000" velocity="100000"/>
-    		<!-- <dynamics damping="0.001" friction="0.0001"/> -->
 		</joint>
 
 		<!-- Caster Wheel -->
 		<link name="${prefix}caster_wheel">
-			<xacro:inertial_cylinder mass="2.0" length="0.01" radius="0.0375">
-				<origin xyz="0 0 0" rpy="0 0 0"/>
-			</xacro:inertial_cylinder>
-			<visual>
-				<origin xyz="0 0 0" rpy="0 0 0"/>
-				<geometry>
-					<cylinder radius="0.0375" length="0.01"/>
-				</geometry>
-				<material name="WheelBlack"/>
-			</visual>
 			<collision>
 				<origin xyz="0 0 0" rpy="0 0 0"/>
 				<geometry>
-					<cylinder radius="0.0375" length="0.01"/>
+					<sphere radius="${caster_wheel_radius}"/>
 				</geometry>
 			</collision>
-			<dynamics damping="0.0001" friction="0.0001"/>
+			<visual>
+				<origin xyz="0 0 0" rpy="0 0 0"/>
+				<geometry>
+					<cylinder radius="${caster_wheel_radius}" length="${caster_wheel_thickness}"/>
+				</geometry>
+				<material name="WheelBlack"/>
+			</visual>
+			<xacro:inertial_cylinder mass="${caster_wheel_mass}" length="${caster_wheel_thickness}" radius="${caster_wheel_radius}">
+				<origin xyz="0 0 0" rpy="0 0 0"/>
+			</xacro:inertial_cylinder>
 		</link>
 
 		<gazebo reference="${prefix}caster_wheel">
 			<material value="Gazebo/White"/>
-			<kp>1000000.0</kp> <!-- kp and kd for rubber -->
-			<kd>100.0</kd>
-			<mu1>0.0</mu1>
-			<mu2>0.0</mu2>
-			<!-- fdir1 0 1 0 /fdir1 --> <!-- see http://github.com/MobileRobots/amr-ros-config/issues/6 -->
-			<maxVel>1.0</maxVel>
-			<minDepth>0.00</minDepth>
+			<mu1 value="0.001"/>
+			<mu2 value="0.001"/>
 		</gazebo>
 
 		<joint name="${prefix}caster_wheel_joint" type="fixed">  <!--Not fixed. Change for simulation -->
@@ -245,11 +241,16 @@
 			<axis xyz="0 0 1"/>
 			<parent link="${prefix}caster_hubcap"/>
 			<child link="${prefix}caster_wheel"/>
-			<dynamics damping="1.0" friction="1.0"/>
 		</joint>
 		
 		<!-- Left Wheel -->
 		<link name="${prefix}left_hub">
+			<!-- <collision>
+				<origin xyz="0 0 0" rpy="${-3.1415927/2.0} 0 0"/>
+				<geometry>
+					<cylinder radius="0.09" length="0.01"/>
+				</geometry>
+			</collision> -->
 			<visual>
 				<origin xyz="0 0 0" rpy="${-3.1415927/2.0} 0 0"/>
 				<geometry>
@@ -257,21 +258,14 @@
 				</geometry>
 				<material name="HubcapYellow"/>
 			</visual>
-			<!-- <collision>
+			<xacro:inertial_cylinder mass="0.01" length="0.01" radius="0.0375">
 				<origin xyz="0 0 0" rpy="${-3.1415927/2.0} 0 0"/>
-				<geometry>
-					<cylinder radius="0.09" length="0.01"/>
-				</geometry>
-			</collision> -->
-			<xacro:inertial_cylinder mass="2.0" length="0.01" radius="0.0375">
-				<origin xyz="0 0 0" rpy="0 0 0"/>
 			</xacro:inertial_cylinder>
 		</link>
 
 		<gazebo reference="${prefix}left_hub">
 			<material value="Gazebo/Yellow"/>
 		</gazebo>
-
 
 		<joint name="${prefix}left_hub_joint" type="fixed">
 			<origin xyz="0 0.15 0.08" rpy="0 0 0"/>
@@ -281,6 +275,12 @@
 		</joint>
 
 		<link name="${prefix}left_wheel">
+			<collision>
+				<origin xyz="0 0 0" rpy="0 0 0"/>
+				<geometry>
+					<sphere radius="${wheel_radius}"/>
+				</geometry>
+			</collision>
 			<visual>
 				<origin xyz="0 0 0" rpy="1.5708 0 0"/>
 				<geometry>
@@ -288,13 +288,7 @@
 				</geometry>
 				<material name="WheelBlack"/>
 			</visual>
-			<collision>
-				<origin xyz="0 0 0" rpy="0 0 0"/>
-				<geometry>
-					<sphere radius="0.09"/>
-				</geometry>
-			</collision>
-			<xacro:inertial_cylinder mass="0.1" length="${wheel_thickness}" radius="${wheel_radius}">
+			<xacro:inertial_cylinder mass="${wheel_mass}" length="${wheel_thickness}" radius="${wheel_radius}">
 				<origin xyz="0 0 0" rpy="0 0 0"/>
 			</xacro:inertial_cylinder>
 		</link>
@@ -310,8 +304,15 @@
 			<child link="${prefix}left_wheel"/>
 		</joint>
 
+
 		<!-- Right Wheel -->
 		<link name="${prefix}right_hub">
+			<!-- <collision>
+				<origin xyz="0 0 0" rpy="${3.1415927/2.0} 0 0"/>
+				<geometry>
+					<cylinder radius="0.09" length="0.01"/>
+				</geometry>
+			</collision> -->
 			<visual>
 				<origin xyz="0 0 0" rpy="${3.1415927/2.0} 0 0"/>
 				<geometry>
@@ -319,6 +320,9 @@
 				</geometry>
 				<material name="HubcapYellow"/>
 			</visual>
+			<xacro:inertial_cylinder mass="0.01" length="0.01" radius="0.0375">
+				<origin xyz="0 0 0" rpy="${3.1415927/2.0} 0 0"/>
+			</xacro:inertial_cylinder>
 		</link>
 
 		<gazebo reference="${prefix}right_hub">
@@ -332,6 +336,12 @@
 		</joint>
 
 		<link name="${prefix}right_wheel">
+			<collision>
+				<origin xyz="0 0 0" rpy="0 0 0"/>
+				<geometry>
+					<sphere radius="${wheel_radius}"/>
+				</geometry>
+			</collision>
 			<visual>
 				<origin xyz="0 0 0" rpy="-1.5708 0 0"/>
 				<geometry>
@@ -339,13 +349,7 @@
 				</geometry>
 				<material name="WheelBlack"/>
 			</visual>
-			<collision>
-				<origin xyz="0 0 0" rpy="0 0 0"/>
-				<geometry>
-					<sphere radius="0.09"/>
-				</geometry>
-			</collision>
-			<xacro:inertial_cylinder mass="0.1" length="${wheel_thickness}" radius="${wheel_radius}">
+			<xacro:inertial_cylinder mass="${wheel_mass}" length="${wheel_thickness}" radius="${wheel_radius}">
 				<origin xyz="0 0 0" rpy="0 0 0"/>
 			</xacro:inertial_cylinder>
 		</link>
